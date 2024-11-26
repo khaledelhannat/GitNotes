@@ -10,5 +10,3 @@ function Temoo(arr) {
 Temoo(me);
 
 // All Good
-
-// now we have another bad line of code 
