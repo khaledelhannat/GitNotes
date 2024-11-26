@@ -106,4 +106,4 @@ This document summarizes the key concepts and commands for Git. Use this as a qu
 
 ---
 
-**Happy Coding!** 🚀
+I compiled these notes while studying the Git and GitHub Full Course by [Fireship](https://fireship.io/) to enhance my learning and as a quick reference.
