@@ -5,12 +5,12 @@ This document summarizes the key concepts and commands for Git. Use this as a qu
 ---
 
 ## 📚 Table of Contents
-1. [Git Started](#git-started)
-2. [Remote](#remote)
-3. [Collaboration](#collaboration)
-4. [Advanced](#advanced)
-5. [GitHub Actions](#github-actions)
-6. [Git Tips](#git-tips)
+1. [Git Started](#🟢-git-started)
+2. [Remote](#🔵-remote)
+3. [Collaboration](#🟠-collaboration)
+4. [Advanced](#🟣-advanced)
+5. [GitHub Actions](#🟡-github-actions)
+6. [Git Tips](#🔥-git-tips)
 
 ---
 
