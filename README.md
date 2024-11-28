@@ -179,7 +179,7 @@ Cloud computing can be categorized into three main types, each offering differen
   - The software application  
 - **Examples**: AWS Rekognition, Google Apps (e.g., Gmail, Google Drive), Dropbox, Zoom.
 
-![Types of Cloud Computing](/Resources/1.png)
+<img src="/resources/1.png" alt="Types of Cloud Computing" width="700"/>
 
 #### Cloud Pricing Models
 
@@ -210,8 +210,8 @@ This model reduces the need for costly investments in physical IT infrastructure
   - Underlying infrastructure (hardware, software).
   - Data centers and physical security.
   - Network and host-level security.
-
-![Shared Responsibility Model](/Resources/2.png)
+ 
+<img src="/resources/2.png" alt="Shared Responsibility Model" width="700"/>
 
 
 #### 2. Exam Relevance
