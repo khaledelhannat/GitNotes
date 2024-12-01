@@ -225,3 +225,166 @@ This model reduces the need for costly investments in physical IT infrastructure
   - Email and messaging abuse.
 - **Purpose**: Ensures ethical and secure use of AWS services.
 ---
+---
+
+## Day 2: Understanding IAM in AWS  
+
+
+### **1. Introduction to IAM**  
+- **What is IAM?**  
+  - Stands for **Identity and Access Management**.  
+  - A **global service** for managing access to AWS resources.  
+  - **Root account** is created by default:  
+    - Should **not** be shared or frequently used.  
+  - Users:  
+    - Represent people within an organization.  
+    - Can belong to **groups** but do not have to.  
+    - A user can belong to **multiple groups**.  
+  - Groups:  
+    - Contain **users only** (not other groups).  
+
+---
+
+### **2. IAM Permissions**  
+- **Policies**:  
+  - JSON documents defining user permissions.  
+  - Examples of policy elements:  
+    ```json
+    {
+      "Effect": "Allow",
+      "Action": "ec2:Describe*",
+      "Resource": "*"
+    }
+    ```
+  - Follow the **principle of least privilege**: Grant only necessary permissions.  
+
+---
+
+### **3. IAM Policy Structure**  
+- Components of a Policy:  
+  - **Version**: Defines the policy language (e.g., `2012-10-17`).  
+  - **Id** (optional): Policy identifier.  
+  - **Statement**: Main block with the following elements:  
+    - **Sid** (optional): Statement identifier.  
+    - **Effect**: Either **Allow** or **Deny**.  
+    - **Principal**: The entity (user/role) the policy applies to.  
+    - **Action**: List of allowed/denied actions.  
+    - **Resource**: List of resources the actions apply to.  
+    - **Condition** (optional): Conditions for applying the policy.  
+
+---
+
+### **4. IAM Password Policies**  
+- Characteristics:  
+  - Set a **minimum password length**.  
+  - Require:  
+    - Uppercase and lowercase letters.  
+    - Numbers.  
+    - Non-alphanumeric characters.  
+  - Additional Features:  
+    - Allow users to **change passwords**.  
+    - Enforce **password expiration**.  
+    - Prevent **password reuse**.  
+
+---
+
+### **5. Multi-Factor Authentication (MFA)**  
+- Combines:  
+  - Something you **know** (password).  
+  - Something you **own** (security device).  
+- Purpose:  
+  - Protect accounts if passwords are compromised.  
+- Supported MFA Devices:  
+  - **Virtual MFA Devices**:  
+    - Examples: Google Authenticator, Authy.  
+  - **Hardware Key Fobs**:  
+    - Providers: Gemalto, SurePassID.  
+  - **U2F Security Keys**:  
+    - Example: YubiKey.  
+
+---
+
+### **6. Accessing AWS**  
+- Methods:  
+  1. **AWS Management Console**:  
+     - Protected by password + MFA.  
+  2. **AWS Command Line Interface (CLI)**:  
+     - Requires **Access Keys**.  
+  3. **AWS SDK**:  
+     - Allows programmatic access.  
+- Access Key Components:  
+  - **Access Key ID**: Like a username.  
+  - **Secret Access Key**: Like a password.  
+  - Both are sensitive and **should not be shared**.  
+
+---
+
+### **7. AWS CLI and SDK**  
+- **AWS CLI**:  
+  - Command-line tool to interact with AWS services.  
+  - Directly accesses AWS public APIs.  
+  - Enables automation via scripts.  
+- **AWS SDK**:  
+  - Provides language-specific APIs.  
+  - Integrates AWS into applications.  
+  - Supports multiple languages (Python, Java, Node.js, etc.).  
+
+---
+
+### **8. IAM Roles**  
+- Used by AWS services to perform actions on your behalf.  
+- Common examples:  
+  - **EC2 Instance Roles**.  
+  - **Lambda Function Roles**.  
+  - **Roles for CloudFormation**.  
+
+---
+
+### **9. IAM Security Tools**  
+- **IAM Credentials Report**:  
+  - Lists all account users and their credential status.  
+- **IAM Last Accessed**:  
+  - Shows service permissions granted to a user and last access time.  
+
+---
+
+### **10. Best Practices**  
+- Do **not** use the root account except for initial setup.  
+- Follow these guidelines:  
+  - One physical user = One AWS user.  
+  - Use **groups** to manage user permissions.  
+  - Enforce a **strong password policy**.  
+  - Enable and enforce **MFA**.  
+  - Use **roles** for granting permissions to AWS services.  
+  - Regularly **audit permissions** using IAM tools.  
+  - Never share IAM credentials.  
+
+---
+
+### **11. Shared Responsibility Model**  
+- AWS is responsible for:  
+  - **Infrastructure security**.  
+  - **Vulnerability analysis**.  
+  - **Compliance validation**.  
+- You are responsible for:  
+  - Managing **users, groups, roles, and policies**.  
+  - Enabling **MFA**.  
+  - Rotating and securing keys.  
+  - Auditing and revising access permissions.  
+
+---
+
+### **12. Summary**  
+- **Users**: Physical people with passwords.  
+- **Groups**: Collections of users.  
+- **Policies**: JSON documents for permissions.  
+- **Roles**: Allow AWS services to act on your behalf.  
+- **Security**: MFA and password policies.  
+- **Access**:  
+  - AWS Console: Password + MFA.  
+  - CLI and SDK: Access Keys.  
+- **Auditing**: Credentials Report and Access Advisor.  
+
+---
+---
+
