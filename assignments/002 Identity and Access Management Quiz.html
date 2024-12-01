@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz</title>
+
+    <style>
+      body {
+        font-family: sf pro text, -apple-system, BlinkMacSystemFont, Roboto,
+          segoe ui, Helvetica, Arial, sans-serif, apple color emoji,
+          segoe ui emoji, segoe ui symbol;
+        font-weight: 400;
+        line-height: 22.4px;
+        font-size: 16px;
+      }
+      p,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      ul,
+      ol {
+        font-size: 16px;
+        font-weight: 400;
+      }
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        max-width: none;
+      }
+      code {
+        background-color: #fff;
+        border: 1px solid #d1d7dc;
+        color: #b4690e;
+        font-size: 90%;
+        padding: 0.2rem 0.4rem;
+      }
+      .quiz-content {
+        padding: 2.4rem;
+        word-break: break-word;
+        max-width: 86rem;
+        margin: 0 auto;
+      }
+      .quiz-container {
+        margin: 0 auto;
+        max-width: 84rem;
+        padding: 0;
+      }
+      .question {
+        margin-bottom: 5rem;
+      }
+      .question span {
+        font-size: 24px;
+        font-weight: 700;
+      }
+      .question-prompt {
+        margin-top: 0.8rem;
+        font-weight: 700;
+      }
+      .question-answer {
+        margin-top: 1.6rem;
+        padding-left: 0;
+        box-sizing: border-box;
+      }
+      .question-answer label {
+        max-width: 80rem;
+        position: relative;
+        cursor: pointer;
+        display: flex;
+        min-width: 18rem;
+        border: solid #1c1d1f 2px;
+      }
+      .question-answer div {
+        display: flex;
+        align-items: center;
+        padding: 0.5rem;
+        width: 100%;
+      }
+      .question-answer div:hover {
+        background-color: #f5f5f5;
+      }
+      .question-answer input {
+        display: none;
+      }
+      .question-answer span {
+        width: 1rem;
+        height: 1rem;
+        margin-right: 1.6rem;
+        top: 0;
+        border-radius: 50%;
+        display: inline-block;
+        flex-shrink: 0;
+        border: 0.2rem solid #1c1d1f;
+        position: relative;
+      }
+      .selected {
+        background: #1c1d1f;
+        box-shadow: 0 0 0 0.4rem #fff inset;
+      }
+      .score {
+              position: fixed;
+            }
+    </style>
+  </head>
+
+  <body onload="main()">
+    <div id="score" class="score">
+      <span>Score: N/A of N/A</span>
+    </div>
+    <div id="quiz-container" class="quiz-content"></div>
+
+    <script>
+      const quizData = {"pass_percent": 70, "questions": [{"_class": "assessment", "id": 18795232, "assessment_type": "multiple-choice", "prompt": {"answers": ["<p>An IAM entity that defines a set of permissions for making AWS service requests, that will be used by AWS&nbsp;services</p>", "<p>IAM&nbsp;Users in multiple Groups</p>", "<p>A password policy</p>", "<p>Permissions assigned to&nbsp;Users to perform actions</p>"], "feedbacks": ["Some AWS service will need to perform actions on your behalf. To do so, you assign permissions to AWS services with IAM Roles.", "IAM Users can belong in multiple Groups, but it's not the IAM Roles definition.", "IAM Roles are not a password policy.", "IAM Roles permissions are not assigned to Users."], "question": "<p>What is a proper definition of IAM&nbsp;Roles?</p>", "relatedLectureIds": ["20054638"]}, "correct_response": ["a"], "section": "", "question_plain": "What is a proper definition of IAM&nbsp;Roles?", "related_lectures": [{"_class": "lecture", "id": 20054638, "title": "IAM Roles for AWS Services", "created": "2020-05-25T17:23:43Z", "is_published": true, "asset": {"_class": "asset", "id": 25143746, "asset_type": "Video", "title": "CCP - IAM - Roles.mp4", "created": "2020-06-01T19:07:07Z"}, "object_index": 26, "url": "/course/aws-certified-cloud-practitioner-new/learn/lecture/20054638"}]}, {"_class": "assessment", "id": 18795502, "assessment_type": "multiple-choice", "prompt": {"answers": ["<p>IAM&nbsp;Credentials Report</p>", "<p>IAM&nbsp;Root Account Manager</p>", "<p>IAM&nbsp;Services Report</p>", "<p>IAM&nbsp;Security Advisor</p>"], "feedbacks": ["IAM Credentials report lists all your account's users and the status of their various credentials. The other IAM Security Tool is IAM Access Advisor. It shows the service permissions granted to a user and when those services were last accessed.", "This service does not exist. It is made up with words related to the service.", "This service does not exist. It is made up with words related to the service.", "This service does not exist. It is made up with words related to the service."], "question": "<p>Which of the following is an IAM&nbsp;Security Tool?</p>", "relatedLectureIds": ["20208152"]}, "correct_response": ["a"], "section": "", "question_plain": "Which of the following is an IAM&nbsp;Security Tool?", "related_lectures": [{"_class": "lecture", "id": 20208152, "title": "IAM Security Tools", "created": "2020-06-01T20:42:42Z", "is_published": true, "asset": {"_class": "asset", "id": 25143756, "asset_type": "Video", "title": "CCP - IAM - Security Tools.mp4", "created": "2020-06-01T19:07:07Z"}, "object_index": 28, "url": "/course/aws-certified-cloud-practitioner-new/learn/lecture/20208152"}]}, {"_class": "assessment", "id": 18794986, "assessment_type": "multiple-choice", "prompt": {"answers": ["<p>IAM&nbsp;Users can belong to multiple groups</p>", "<p>IAM&nbsp;Users don't have to belong to a group</p>", "<p>IAM&nbsp;Users can have policies assigned to them</p>", "<p>IAM&nbsp;Users access AWS&nbsp;with the root account credentials</p>"], "feedbacks": ["IAM\u00a0Users can belong to multiple groups (if a user is part of different teams for example).", "IAM\u00a0Users don't necessarily have to belong to a group.", "You can assign policies to IAM Users to give them permissions.", "IAM Users access AWS using a username and a password."], "question": "<p>Which answer is INCORRECT&nbsp;regarding IAM&nbsp;Users?</p>", "relatedLectureIds": ["20054584"]}, "correct_response": ["d"], "section": "", "question_plain": "Which answer is INCORRECT&nbsp;regarding IAM&nbsp;Users?", "related_lectures": [{"_class": "lecture", "id": 20054584, "title": "IAM Introduction: Users, Groups, Policies", "created": "2020-05-25T17:21:40Z", "is_published": true, "asset": {"_class": "asset", "id": 25245505, "asset_type": "Video", "title": "CCP - IAM - Users Groups Policies.mp4", "created": "2020-06-05T10:25:39Z"}, "object_index": 14, "url": "/course/aws-certified-cloud-practitioner-new/learn/lecture/20054584"}]}, {"_class": "assessment", "id": 18793832, "assessment_type": "multiple-choice", "prompt": {"answers": ["<p>Don't use the root user account</p>", "<p>Create several users for a physical person</p>", "<p>Share credentials so a colleague can perform a task for you</p>", "<p>Do not enable MFA for easier access</p>"], "feedbacks": ["You only want to use the root account to create your first IAM user, and for a few account and service management tasks. For every day and administration tasks, use an IAM user with permissions.", "It is not an IAM best practice. You should create one user per physical person.", "It is not an IAM best practice. You never want to share your credentials.", "It is not an IAM best practice. You should enable Multi-Factor Authentication (MFA) for all accounts to ensure maximum security."], "question": "<p>Which of the following is an IAM&nbsp;best practice?</p>", "relatedLectureIds": ["20054690"]}, "correct_response": ["a"], "section": "", "question_plain": "Which of the following is an IAM&nbsp;best practice?", "related_lectures": []}, {"_class": "assessment", "id": 18795356, "assessment_type": "multiple-choice", "prompt": {"answers": ["<p>AWS&nbsp;services performable actions</p>", "<p>JSON&nbsp;documents to define Users, Groups or Roles' permissions</p>", "<p>Rules to set up a password for IAM&nbsp;Users</p>"], "feedbacks": ["IAM Policies do not only define AWS services' performable actions.", "An IAM policy is an entity that, when attached to an identity or resource, defines their permissions.", "This is a password policy, not an IAM Policy."], "question": "<p>What are IAM&nbsp;Policies?</p>", "relatedLectureIds": ["20054584"]}, "correct_response": ["b"], "section": "", "question_plain": "What are IAM&nbsp;Policies?", "related_lectures": [{"_class": "lecture", "id": 20054584, "title": "IAM Introduction: Users, Groups, Policies", "created": "2020-05-25T17:21:40Z", "is_published": true, "asset": {"_class": "asset", "id": 25245505, "asset_type": "Video", "title": "CCP - IAM - Users Groups Policies.mp4", "created": "2020-06-05T10:25:39Z"}, "object_index": 14, "url": "/course/aws-certified-cloud-practitioner-new/learn/lecture/20054584"}]}, {"_class": "assessment", "id": 18795368, "assessment_type": "multiple-choice", "prompt": {"answers": ["<p>Infrastructure security</p>", "<p>Compliance validation</p>", "<p>Configuration and vulnerability analysis</p>", "<p>Assigning users proper IAM&nbsp;Policies</p>"], "feedbacks": ["AWS is responsible for infrastructure security.", "AWS is responsible for compliance validation.", "AWS is responsible for configuration and vulnerability analysis.", "Customers are responsible for defining and using IAM policies."], "question": "<p>Under the shared responsibility model, what is the customer responsible for in IAM?</p>", "relatedLectureIds": ["20054694"]}, "correct_response": ["d"], "section": "", "question_plain": "Under the shared responsibility model, what is the customer responsible for in IAM?", "related_lectures": [{"_class": "lecture", "id": 20054694, "title": "Shared Responsibility Model for IAM", "created": "2020-05-25T17:26:03Z", "is_published": true, "asset": {"_class": "asset", "id": 25143784, "asset_type": "Video", "title": "CCP - IAM - Shared Responsibility.mp4", "created": "2020-06-01T19:07:07Z"}, "object_index": 31, "url": "/course/aws-certified-cloud-practitioner-new/learn/lecture/20054694"}]}, {"_class": "assessment", "id": 34449008, "assessment_type": "multiple-choice", "prompt": {"question": "<p>Which of the following statements is TRUE?</p>", "feedbacks": ["This statement is true.", "The AWS CLI can interact with AWS using commands in your command-line shell, while the AWS SDK can interact with AWS programmatically."], "answers": ["<p>The AWS CLI can interact with AWS using commands in your command-line shell, while the AWS SDK can interact with AWS programmatically.</p>", "<p>The AWS SDK can interact with AWS using commands in your command-line shell, while the AWS CLI can interact with AWS programmatically.</p>"], "relatedLectureIds": ["20208128"]}, "correct_response": ["a"], "section": "", "question_plain": "Which of the following statements is TRUE?", "related_lectures": [{"_class": "lecture", "id": 20208128, "title": "AWS Access Keys, CLI and SDK", "created": "2020-06-01T20:42:17Z", "is_published": true, "asset": {"_class": "asset", "id": 33685518, "asset_type": "Video", "title": "CCP_-_IAM_-_Access_Keys_CLI_SDK_v2.mp4", "created": "2021-05-20T19:21:24Z"}, "object_index": 20, "url": "/course/aws-certified-cloud-practitioner-new/learn/lecture/20208128"}]}, {"_class": "assessment", "id": 18795486, "assessment_type": "multiple-choice", "prompt": {"answers": ["<p>Grant most privilege</p>", "<p>Grant least privilege</p>", "<p>Grant permissions if your employee asks you to</p>", "<p>Restrict root account permissions</p>"], "feedbacks": ["You do not want to grant maximum privileges to all users.", "That's right! Don't give more permissions than the user needs.", "You shouldn't grant permissions to your employees, unless it's relevant with their work.", "You cannot restrict root account permissions."], "question": "<p>Which principle should you apply regarding IAM Permissions?</p>", "relatedLectureIds": ["20054690"]}, "correct_response": ["b"], "section": "", "question_plain": "Which principle should you apply regarding IAM Permissions?", "related_lectures": []}, {"_class": "assessment", "id": 18793798, "assessment_type": "multiple-choice", "prompt": {"answers": ["<p>Enable Multi-Factor Authentication (MFA)</p>", "<p>Remove permissions from the root account</p>", "<p>Use AWS&nbsp;only through the Command Line Interface (CLI)</p>"], "feedbacks": ["You want to enable MFA in order to add a layer of security, so even if your password is stolen, lost or hacked your account is not compromised.", "You cannot remove permissions to the root account, it has all permissions enabled by default.", "Using AWS with the CLI won't help with security."], "question": "<p>What should you do to increase your root account security?</p>", "relatedLectureIds": ["20208142"]}, "correct_response": ["a"], "section": "", "question_plain": "What should you do to increase your root account security?", "related_lectures": [{"_class": "lecture", "id": 20208142, "title": "IAM MFA Overview", "created": "2020-06-01T20:42:35Z", "is_published": true, "asset": {"_class": "asset", "id": 56533336, "asset_type": "Video", "title": "CCP_-_IAM_-_MFA_Overview_v2.mp4", "created": "2024-05-12T07:08:28Z"}, "object_index": 18, "url": "/course/aws-certified-cloud-practitioner-new/learn/lecture/20208142"}]}]};
+      var correct = 0;
+      var total = 0;
+      const questionData = quizData.questions
+      const passPercent = quizData.pass_percent
+
+      function main() {
+        total = questionData.length;
+
+        var questions = [];
+        for (var i = 0; i < questionData.length; i++) {
+          var question = questionData[i];
+          var questionText = question.prompt.question;
+          var answers = question.prompt.answers;
+          var correctAnswer = question.correct_response[0];
+          var correctAnswerText = answers[correctAnswer.charCodeAt(0) - 97];
+          var questionObj = {
+            question: questionText,
+            correctAnswer: correctAnswerText,
+            answers: answers,
+            id: question.id,
+          };
+          questions.push(questionObj);
+        }
+
+        updateScore();
+
+        // display the questions
+        var questionsContainer = document.getElementById("quiz-container");
+        for (var i = 0; i < questions.length; i++) {
+          var question = questions[i];
+          var questionElement = document.createElement("form");
+          questionElement.className = "question";
+          questionElement.innerHTML =
+            "<span>Question " +
+            (i + 1) +
+            ":</span>" +
+            '<div class="question-prompt">' +
+            question.question +
+            "</div>";
+          questionElement.id = question.id;
+          questionElement.classList.add("quiz-container");
+          var answersElement = document.createElement("ul");
+          answersElement.className = "answers";
+          for (var j = 0; j < question.answers.length; j++) {
+            var answer = question.answers[j];
+            var answerElement = document.createElement("li");
+            answerElement.className = "answer";
+            answerElement.innerHTML =
+              '<label for="input-' +
+              question.id +
+              "-" +
+              j +
+              '"><div onclick="select(' +
+              question.id +
+              ", " +
+              j +
+              ')"><span></span><input id="input-' +
+              question.id +
+              "-" +
+              j +
+              '" type="radio" name="question' +
+              i +
+              '" value="' +
+              j +
+              '">' +
+              answer +
+              "</input></div></label>";
+            answerElement.classList.add("question-answer");
+            answersElement.appendChild(answerElement);
+          }
+
+          questionElement.appendChild(answersElement);
+
+          // add a submit button
+          var submitButton = document.createElement("button");
+          submitButton.className = "submit";
+          submitButton.innerHTML = "Submit";
+          submitButton.classList.add("submit-button");
+
+          submitButton.addEventListener("click", function (e) {
+            e.preventDefault();
+            var questionElement = e.target.parentElement;
+            var questionId = questionElement.id;
+            var question = questions.filter(function (q) {
+              return q.id == questionId;
+            })[0];
+
+            // set the border color of all answers to black
+            var answers = questionElement.getElementsByClassName("answer");
+            for (var i = 0; i < answers.length; i++) {
+              console.log(answers[i]);
+              answers[i].children[0].style.borderColor = "#1c1d1f";
+            }
+
+            var answer = questionElement.querySelector(
+              'input[type="radio"]:checked'
+            );
+            if (answer) {
+              var answerIndex = answer.value;
+              var answerText = question.answers[answerIndex];
+              if (answerText == question.correctAnswer) {
+                answer.parentElement.parentElement.style.borderColor =
+                  "limegreen";
+                // alert("Correct!");
+                correct++;
+                updateScore();
+              } else {
+                answer.parentElement.parentElement.style.borderColor = "red";
+                // alert("Incorrect!");
+              }
+            } else {
+              alert("Please select an answer.");
+            }
+          });
+
+          // add button
+          questionElement.appendChild(submitButton);
+
+          questionsContainer.appendChild(questionElement);
+        }
+      }
+
+      function select(question, answer) {
+        var questionElement = document.getElementById(question);
+        var answers = questionElement.getElementsByClassName("answer");
+        for (var i = 0; i < answers.length; i++) {
+          var span = answers[i].children[0].children[0].children[0];
+          var input = answers[i].children[0].children[0].children[1];
+          span.classList.remove("selected");
+          input.checked = false;
+        }
+        var span = answers[answer].children[0].children[0].children[0];
+        var input = answers[answer].children[0].children[0].children[1];
+        span.classList.add("selected");
+        input.checked = true;
+      }
+
+      function updateScore() {
+        var scoreElem = document.getElementById("score");
+        const score = (correct / total) * 100;
+        scoreElem.innerHTML = "Score: " + score + "/" + passPercent + "%";
+      }
+    </script>
+  </body>
+</html>
