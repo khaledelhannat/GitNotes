@@ -1,6 +1,6 @@
 # C# and .NET Learning Repository
 
-This repository is a dedicated space for my journey in learning C# and exploring the .NET framework. The content is organized into branches, each representing a different phase of learning. This README provides an overview of the topics covered in the first two sections of the course.
+This repository is a dedicated space for my journey in learning C# and exploring the .NET framework.
 
 ---
 
