@@ -101,3 +101,115 @@ int i = Convert.ToInt32(s);
 ```
 - **Best Practice**: Use comments to explain "why" rather than "what."
 
+---
+
+## Section 3: Non-Primitive Types
+
+### Overview
+This section delves into non-primitive types in C#, including classes, structs, arrays, strings, and enums, along with their practical applications and differences.
+
+### Key Concepts
+
+#### **Classes**
+- A **class** is a blueprint for creating objects by combining related fields (attributes) and methods (functions).
+- **Object**: An instance of a class created at runtime.
+- **Access Modifiers**: Determine the visibility of classes and their members. Example:
+  ``public class Person``
+
+Example class with a field and a method:
+```
+public class Person
+{
+    public string Name;
+
+    public void Introduce()
+    {
+        Console.WriteLine("My name is " + Name);
+    }
+}
+```
+
+Creating an object and accessing its members:
+```var person = new Person();
+person.Name = "Mosh";
+person.Introduce();
+```
+
+#### **Static Members**
+- Declaring a member as **static** makes it accessible via the class rather than objects. Example:
+  ``Person.Introduce();``
+
+#### **Structs**
+- Similar to classes but used for lightweight objects. Example:
+```
+public struct RgbColor
+{
+    public int Red;
+    public int Green;
+    public int Blue;
+}
+```
+
+Use structs for small, simple types like `RgbColor`.
+
+#### **Arrays**
+- A collection of variables of the same type.
+- Created using the `new` operator. Example:
+  ``int[] numbers = new int[3];``
+- Access elements using index notation:
+  ``numbers[0] = 1;``
+
+#### **Strings**
+- A sequence of characters enclosed in double quotes. Example:
+  ``string name = "Mosh";``
+- **Immutable**: Cannot modify the value directly, all changes result in a new string.
+- Common string operations:
+  - Concatenation:
+    ``string fullName = firstName + " " + lastName;``
+  - Using `string.Format`:
+    ``string fullName = string.Format("{0} {1}", firstName, lastName);``
+
+#### **Escape Characters**
+| Character | Description        |
+| --------- | ------------------ |
+| `\n`      | New line           |
+| `\t`      | Tab                |
+| `\\`      | Backslash (`\`)    |
+| `\'`      | Single quote (`'`) |
+| `\"`      | Double quote (`"`) |
+
+Example of verbatim string for readability:
+``var message = @"Hi John,
+Look at the following path:
+c:\folder1\folder2";``
+
+#### **Reference Types vs Value Types**
+- **Value Types**: Copy the actual value. Example:
+```
+var i = 10; 
+var j = i; 
+j++;
+``` 
+(Incrementing `j` doesn’t affect `i`.)
+- **Reference Types**: Copy the memory address. Example:
+```
+var array1 = new int[3] { 1, 2, 3 }; 
+var array2 = array1;
+``` 
+(Changes in `array2` affect `array1`.)
+
+#### **Enums**
+- Represents a set of name/value pairs. Example:
+```
+public enum ShippingMethod
+{
+    Regular = 1,
+    Express = 2
+}
+```
+- Use enums for related constants:
+  ``var method = ShippingMethod.Express;``
+- Cast enums to/from integers:
+  ``var methodId = (int)ShippingMethod.Express;``
+
+---
